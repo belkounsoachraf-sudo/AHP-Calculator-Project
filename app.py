@@ -211,3 +211,15 @@ else:
         plt.xticks(rotation=45, ha='right')
         plt.tight_layout()
         st.pyplot(fig)
+        
+        # --- 5.4 Détermination du Meilleur Choix (Nouveau) ---
+        st.subheader("5.4 Recommandation de Priorité")
+        
+        # Le meilleur choix est le premier élément dans le DataFrame trié
+        best_choice = df_results.iloc[0]['Élément']
+        best_score_percent = df_results.iloc[0]['Poids (%)']
+
+        st.success(f"Selon les pondérations AHP, l'élément le plus prioritaire est : **{best_choice}** avec un poids de **{best_score_percent}**.")
+        
+        if CR > 0.10:
+             st.warning("Attention : Bien que cet élément soit le plus prioritaire, le Taux de Cohérence (CR) est élevé. Veuillez revoir vos jugements pour assurer la fiabilité de cette recommandation.")
